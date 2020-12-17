@@ -34,9 +34,9 @@ const devConfig = {
         // 一切服务都启用gzip 压缩
         compress: true,
         // 设置代理服务器
-        proxy: {
-            '/api': 'http://localhost:7001',
-        },
+        // proxy: {
+        //     '/api': 'http://localhost:7001',
+        // },
         host: '0.0.0.0',
         port: 3001,
     },

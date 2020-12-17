@@ -1,21 +1,35 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
+import { List } from 'antd-mobile';
 import { connect } from 'react-redux';
-import { setUserinfo } from '_store/actions/index';
+import { saveUserinfo } from '_store/actions/index';
 import { objIsNull } from '_utils/index';
 import { Redirect } from 'react-router-dom';
+import '_less/user/index.less';
+
+const { Item } = List;
 
 const User = (props) => {
     const { userInfo } = props;
+
+    console.log(userInfo);
+
     useEffect(() => {}, []);
 
     //判断用户数据是否为空，如果为空则跳转到登录页
     if (objIsNull(userInfo)) {
         return <Redirect to="/login" />;
     }
-    return <Fragment>user</Fragment>;
+    return (
+        <div className="user">
+            <List>
+                <Item extra={<div>123</div>}>头像：</Item>
+                <Item extra={userInfo.name}>用户名：</Item>
+            </List>
+        </div>
+    );
 };
 
-const mapToProps = { setUserinfo };
+const mapToProps = { saveUserinfo };
 
 export default connect((state) => {
     return {

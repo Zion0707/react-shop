@@ -64,6 +64,8 @@ module.exports = {
             _components: resolve(__dirname, '../src/components'),
             _store: resolve(__dirname, '../src/store'),
             _utils: resolve(__dirname, '../src/utils'),
+            _mock: resolve(__dirname, '../src/mock'),
+            _api: resolve(__dirname, '../src/api'),
         },
     },
 };

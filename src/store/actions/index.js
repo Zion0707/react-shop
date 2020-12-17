@@ -1,5 +1,7 @@
-import { SET_USERINFO } from '_store/constants/index';
+import { SAVE_USERINFO } from '_store/constants/index';
 
-export function setUserinfo(payload) {
-    return { type: SET_USERINFO, payload };
+// 保存用户信息
+export function saveUserinfo(payload) {
+    localStorage.setItem('userInfo', JSON.stringify(payload));
+    return { type: SAVE_USERINFO, payload };
 }

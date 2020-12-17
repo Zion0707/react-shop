@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { InputItem } from 'antd-mobile';
+import { useHistory } from 'react-router-dom';
+import { InputItem, Toast } from 'antd-mobile';
 import { formValidationReg } from '_const/index';
+import { toLogin } from '_api/index';
+import { connect } from 'react-redux';
+import { saveUserinfo } from '_store/actions/index';
 import '_less/login/index.less';
+import '_mock/index';
 
 const { phone: _phoneReg } = formValidationReg;
 
-const Login = () => {
-    const [userMobile, setUserMobile] = useState('');
-    const [userPassword, setUserPassword] = useState('');
+const Login = (props) => {
+    const history = useHistory();
+    const [userMobile, setUserMobile] = useState('15820354728');
+    const [userPassword, setUserPassword] = useState('12345678');
     const [userMobileHasErr, setUserMobileHasErr] = useState(false);
     const [userPasswordHasErr, setUserPasswordHasErr] = useState(false);
 
@@ -25,18 +31,44 @@ const Login = () => {
     };
 
     useEffect(() => {
-        setUserPasswordHasErr(userPassword.length < 8 && userMobile !== '');
+        setUserPasswordHasErr(userPassword.length < 8 && userPassword !== '');
     }, [userPassword]);
+
+    // 校验登录
+    const checkLogin = () => {
+        toLogin({
+            phone: userMobile,
+            password: userPassword,
+        }).then((res) => {
+            const { data } = res;
+            const { code, message } = data;
+            if (code === 200) {
+                // 保存用户信息
+                props.saveUserinfo(data.data);
+                history.push('/user');
+            } else {
+                Toast.fail(message);
+            }
+        });
+    };
 
     // 表单提交
     const submitForm = () => {
-        if (
+        const judge =
             userMobile !== '' &&
             userPassword !== '' &&
             userMobileHasErr === false &&
-            userPasswordHasErr === false
-        ) {
-            console.log(userMobile, userPassword);
+            userPasswordHasErr === false;
+        if (judge) {
+            checkLogin();
+            return;
+        }
+
+        if (userMobile === '') {
+            setUserMobileHasErr(true);
+        }
+        if (userPassword === '') {
+            setUserPasswordHasErr(true);
         }
     };
 
@@ -65,4 +97,9 @@ const Login = () => {
         </div>
     );
 };
-export default Login;
+
+const mapToProps = {
+    saveUserinfo,
+};
+
+export default connect((state) => ({ userInfo: state.getUserInfo.userInfo }), mapToProps)(Login);

@@ -1,16 +1,19 @@
 import { combineReducers } from 'redux';
-import { SET_USERINFO } from '_store/constants/index';
+import { SAVE_USERINFO } from '_store/constants/index';
 
+const userInfo = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : {};
 const initalState = {
-    userInfo: {},
+    userInfo,
 };
 
+// 获取用户信息
 function getUserInfo(state = initalState, action) {
     switch (action.type) {
-        case SET_USERINFO:
+        case SAVE_USERINFO:
+            console.log(action.payload);
             return {
                 ...state,
-                userInfo: action.payload.userInfo,
+                userInfo: action.payload,
             };
         default:
             return state;
