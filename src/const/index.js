@@ -4,17 +4,27 @@ import Loading from '_components/loading';
 // 路由表
 export const routers = [
     {
-        path: ['/', '/home'],
-        name: '首页',
+        path: ['/', '/home', '/home/:any'],
+        name: 'home',
         exact: true,
         component: Loadable({
             loader: () => import('_pages/home/index'),
             loading: Loading,
         }),
+        child: [
+            {
+                path: '/home/:id',
+                name: 'detail',
+                component: Loadable({
+                    loader: () => import('_pages/home/detail/index'),
+                    loading: Loading,
+                }),
+            },
+        ],
     },
     {
         path: '/class',
-        name: '分类',
+        name: 'class',
         component: Loadable({
             loader: () => import('_pages/class/index'),
             loading: Loading,
@@ -22,7 +32,7 @@ export const routers = [
     },
     {
         path: '/car',
-        name: '购物车',
+        name: 'car',
         component: Loadable({
             loader: () => import('_pages/car/index'),
             loading: Loading,
@@ -30,7 +40,7 @@ export const routers = [
     },
     {
         path: '/user',
-        name: '用户中心',
+        name: 'user',
         component: Loadable({
             loader: () => import('_pages/user/index'),
             loading: Loading,

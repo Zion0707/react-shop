@@ -18,8 +18,6 @@ axios.interceptors.request.use(
 // http响应拦截器
 axios.interceptors.response.use(
     (res) => {
-        console.log(res);
-
         if (res.data.bodyObj && res.data.bodyObj.code) {
             const code = res.data.bodyObj.code;
             // 10101是未登录状态码

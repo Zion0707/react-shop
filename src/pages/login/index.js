@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { InputItem, Toast } from 'antd-mobile';
 import { formValidationReg } from '_const/index';
-import { toLogin } from '_api/index';
+import { toLoginApi } from '_api/index';
 import { connect } from 'react-redux';
 import { saveUserInfo } from '_store/actions/index';
 import '_less/login/index.less';
@@ -36,7 +36,7 @@ const Login = (props) => {
 
     // 校验登录
     const checkLogin = () => {
-        toLogin({
+        toLoginApi({
             phone: userMobile,
             password: userPassword,
         }).then((res) => {

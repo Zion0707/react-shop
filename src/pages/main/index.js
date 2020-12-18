@@ -17,9 +17,11 @@ const Main = () => {
                             return (
                                 <Route
                                     key={item.path}
-                                    path={item.path}
                                     exact={item.exact}
-                                    component={item.component}
+                                    path={item.path}
+                                    render={(props) => (
+                                        <item.component {...props} store={store} routers={item.child} />
+                                    )}
                                 />
                             );
                         })}
