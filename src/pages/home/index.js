@@ -8,7 +8,6 @@ import '_less/home/index.less';
 const Home = (props) => {
     const history = useHistory();
     const routers = props.routers;
-    console.log(routers);
     const [goodList, setGoodList] = useState([]);
 
     // 搜索提交
