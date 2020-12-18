@@ -1,19 +1,22 @@
-import React, { Fragment, useEffect } from 'react';
-import { List } from 'antd-mobile';
+import React from 'react';
+import { Button, List } from 'antd-mobile';
 import { connect } from 'react-redux';
-import { saveUserinfo } from '_store/actions/index';
-import { objIsNull } from '_utils/index';
-import { Redirect } from 'react-router-dom';
+import { saveUserInfo } from '_store/actions/index';
+import { objIsNull, toLogout } from '_utils/index';
+import { Redirect, useHistory } from 'react-router-dom';
 import '_less/user/index.less';
 
 const { Item } = List;
 
 const User = (props) => {
     const { userInfo } = props;
+    const history = useHistory();
 
-    console.log(userInfo);
-
-    useEffect(() => {}, []);
+    const logout = () => {
+        toLogout(history, () => {
+            props.saveUserInfo({});
+        });
+    };
 
     //判断用户数据是否为空，如果为空则跳转到登录页
     if (objIsNull(userInfo)) {
@@ -21,15 +24,29 @@ const User = (props) => {
     }
     return (
         <div className="user">
-            <List>
-                <Item extra={<div>123</div>}>头像：</Item>
+            <List className="user-item">
+                <Item
+                    extra={
+                        <div className="head-portrait">
+                            <img src={userInfo.head} alt="头像" />
+                        </div>
+                    }
+                >
+                    头像：
+                </Item>
                 <Item extra={userInfo.name}>用户名：</Item>
+                <Item extra={userInfo.uid}>ID：</Item>
             </List>
+            <div className="user-logout">
+                <Button type="warning" onClick={logout}>
+                    退出
+                </Button>
+            </div>
         </div>
     );
 };
 
-const mapToProps = { saveUserinfo };
+const mapToProps = { saveUserInfo };
 
 export default connect((state) => {
     return {

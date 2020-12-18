@@ -1,0 +1,31 @@
+@import '../config.less';
+
+.user {
+    .head-portrait {
+        width: 3rem;
+        height: 3rem;
+        float: right;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    .user-item {
+        margin-bottom: 5rem;
+    }
+
+    .user-logout {
+        padding: 1rem;
+        a {
+            .confirmBtn();
+        }
+    }
+}

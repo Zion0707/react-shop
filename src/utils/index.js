@@ -5,3 +5,10 @@ export const objIsNull = (obj) => {
     }
     return false;
 };
+
+// 退出登录
+export const toLogout = (history, callback) => {
+    localStorage.clear();
+    history.push('/login');
+    callback && callback();
+};

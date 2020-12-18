@@ -4,7 +4,7 @@ import { InputItem, Toast } from 'antd-mobile';
 import { formValidationReg } from '_const/index';
 import { toLogin } from '_api/index';
 import { connect } from 'react-redux';
-import { saveUserinfo } from '_store/actions/index';
+import { saveUserInfo } from '_store/actions/index';
 import '_less/login/index.less';
 import '_mock/index';
 
@@ -12,8 +12,8 @@ const { phone: _phoneReg } = formValidationReg;
 
 const Login = (props) => {
     const history = useHistory();
-    const [userMobile, setUserMobile] = useState('15820354728');
-    const [userPassword, setUserPassword] = useState('12345678');
+    const [userMobile, setUserMobile] = useState('');
+    const [userPassword, setUserPassword] = useState('');
     const [userMobileHasErr, setUserMobileHasErr] = useState(false);
     const [userPasswordHasErr, setUserPasswordHasErr] = useState(false);
 
@@ -44,7 +44,7 @@ const Login = (props) => {
             const { code, message } = data;
             if (code === 200) {
                 // 保存用户信息
-                props.saveUserinfo(data.data);
+                props.saveUserInfo(data.data);
                 history.push('/user');
             } else {
                 Toast.fail(message);
@@ -99,7 +99,7 @@ const Login = (props) => {
 };
 
 const mapToProps = {
-    saveUserinfo,
+    saveUserInfo,
 };
 
 export default connect((state) => ({ userInfo: state.getUserInfo.userInfo }), mapToProps)(Login);
