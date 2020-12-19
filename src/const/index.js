@@ -4,7 +4,7 @@ import Loading from '_components/loading';
 // 路由表
 export const routers = [
     {
-        path: ['/', '/home', '/home/:any'],
+        path: ['/home', '/home/:any'],
         name: 'home',
         exact: true,
         component: Loadable({
@@ -15,6 +15,7 @@ export const routers = [
             {
                 path: '/home/:id',
                 name: 'detail',
+                exact: true,
                 component: Loadable({
                     loader: () => import('_pages/home/detail/index'),
                     loading: Loading,
