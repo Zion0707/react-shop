@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
+import '_less/class/index.less';
 
 const Class = (props) => {
     const { child } = props.route;

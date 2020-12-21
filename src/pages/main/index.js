@@ -6,6 +6,8 @@ import { routers } from '_const/index';
 import Login from '_pages/login/index';
 import Nav from '_components/nav';
 import store from '_store/index';
+import AnimatedRouter from 'react-animated-router';
+import 'react-animated-router/animate.css';
 import '_less/main/index.less';
 
 const Main = () => {
@@ -13,7 +15,9 @@ const Main = () => {
         <Provider store={store}>
             <Router>
                 <div className="page">
-                    <Switch>{renderRoutes(routers)}</Switch>
+                    <Switch>
+                        <AnimatedRouter timeout={200}>{renderRoutes(routers)}</AnimatedRouter>
+                    </Switch>
                 </div>
                 <Nav />
 
