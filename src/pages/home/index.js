@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { SearchBar, Toast } from 'antd-mobile';
 import { goodsListApi } from '_api/index';
-import { useHistory, Route } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
+
 import '_mock/index';
 import '_less/home/index.less';
 
 const Home = (props) => {
     const history = useHistory();
-    const routers = props.routers;
+    const { child } = props.route;
     const [goodList, setGoodList] = useState([]);
 
     // 搜索提交
@@ -58,16 +60,7 @@ const Home = (props) => {
                 })}
             </ul>
 
-            {routers.map((item) => {
-                return (
-                    <Route
-                        key={item.path}
-                        path={item.path}
-                        exact={item.exact}
-                        render={(props) => <item.component {...props} routers={item.child} />}
-                    />
-                );
-            })}
+            {renderRoutes(child)}
         </div>
     );
 };

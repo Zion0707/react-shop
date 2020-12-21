@@ -19,8 +19,6 @@ const Nav = () => {
             setBarSelected('home');
         } else if (pathname.indexOf('/class') !== -1) {
             setBarSelected('class');
-        } else if (pathname.indexOf('/car') !== -1) {
-            setBarSelected('car');
         } else if (pathname.indexOf('/user') !== -1) {
             setBarSelected('user');
         } else {
@@ -50,14 +48,6 @@ const Nav = () => {
                     icon={<div className="tabbar-icon tabbar-class"></div>}
                     selectedIcon={<div className="tabbar-icon tabbar-class-active"></div>}
                     onPress={tabbarSelect.bind(this, 'class')}
-                ></TabBar.Item>
-                <TabBar.Item
-                    selected={barSelected === 'car'}
-                    title="购物车"
-                    key="car"
-                    icon={<div className="tabbar-icon tabbar-car"></div>}
-                    selectedIcon={<div className="tabbar-icon tabbar-car-active"></div>}
-                    onPress={tabbarSelect.bind(this, 'car')}
                 ></TabBar.Item>
                 <TabBar.Item
                     selected={barSelected === 'user'}

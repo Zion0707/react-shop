@@ -1,9 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
 import { routers } from '_const/index';
 import Login from '_pages/login/index';
-import Nav from './components/nav';
+import Nav from '_components/nav';
 import store from '_store/index';
 import '_less/main/index.less';
 
@@ -12,20 +13,7 @@ const Main = () => {
         <Provider store={store}>
             <Router>
                 <div className="page">
-                    <Switch>
-                        {routers.map((item) => {
-                            return (
-                                <Route
-                                    key={item.path}
-                                    exact={item.exact}
-                                    path={item.path}
-                                    render={(props) => (
-                                        <item.component {...props} store={store} routers={item.child} />
-                                    )}
-                                />
-                            );
-                        })}
-                    </Switch>
+                    <Switch>{renderRoutes(routers)}</Switch>
                 </div>
                 <Nav />
 
