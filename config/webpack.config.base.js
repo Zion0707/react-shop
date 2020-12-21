@@ -37,6 +37,7 @@ module.exports = {
                         options: {
                             // 8kb 以下采用base64方式
                             limit: 8 * 1024,
+                            outputPath: 'imgs',
                             name: '[hash:8].[ext]',
                         },
                     },
