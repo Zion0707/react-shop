@@ -1,7 +1,7 @@
 import Loadable from 'react-loadable';
 import Loading from '_components/loading';
 
-// 路由表
+// 路由表，凡是带有child子页面的父级，绝对不能加exact否则无法显示
 export const routers = [
     {
         path: '/',
@@ -23,9 +23,8 @@ export const routers = [
             {
                 path: '/home/:id',
                 name: 'detail',
-                exact: true,
                 component: Loadable({
-                    loader: () => import('_pages/home/_id/index'),
+                    loader: () => import('_pages/home-id/index'),
                     loading: Loading,
                 }),
             },
@@ -38,6 +37,34 @@ export const routers = [
             loader: () => import('_pages/class/index'),
             loading: Loading,
         }),
+        child: [
+            {
+                path: '/class/mobile',
+                name: 'mobile',
+                component: Loadable({
+                    loader: () => import('_pages/class-mobile/index'),
+                    loading: Loading,
+                }),
+                child: [
+                    {
+                        path: '/class/mobile/detail',
+                        name: 'mobile-detail',
+                        component: Loadable({
+                            loader: () => import('_pages/class-mobile-detail/index'),
+                            loading: Loading,
+                        }),
+                    },
+                ],
+            },
+            {
+                path: '/class/mobile',
+                name: 'mobile',
+                component: Loadable({
+                    loader: () => import('_pages/class-computer/index'),
+                    loading: Loading,
+                }),
+            },
+        ],
     },
     {
         path: '/user',

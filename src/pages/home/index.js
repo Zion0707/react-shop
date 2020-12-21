@@ -3,7 +3,6 @@ import { SearchBar, Toast } from 'antd-mobile';
 import { goodsListApi } from '_api/index';
 import { useHistory } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-
 import '_mock/index';
 import '_less/home/index.less';
 
@@ -38,7 +37,9 @@ const Home = (props) => {
 
     return (
         <div className="home">
-            <SearchBar placeholder="输入您想要的项目" onSubmit={searchSubmit} />
+            <div className="home-search">
+                <SearchBar placeholder="输入您想要的项目" onSubmit={searchSubmit} />
+            </div>
             <ul className="home-item">
                 {goodList.map((item) => {
                     return (
