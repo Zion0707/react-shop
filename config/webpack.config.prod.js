@@ -12,7 +12,7 @@ const prodConfig = {
     output: {
         path: resolve(__dirname, '../dist'),
         filename: '[name].[chunkhash:8].js',
-        publicPath: './', // 或cdn地址 https://cdn.example.com/
+        publicPath: '/', // 或cdn地址 https://cdn.example.com/
     },
 
     module: {
@@ -35,7 +35,7 @@ const prodConfig = {
         new CleanWebpackPlugin(),
         // 开启css从js抽离，避免js加载css导致闪屏问题
         new MiniCssExtractPlugin({
-            filename: 'css/[chunkhash:8].css',
+            filename: '[chunkhash:8].css',
         }),
         // css 文件压缩
         new OptimizeCssAssetsWebpackPlugin(),
