@@ -47,10 +47,10 @@ export const routers = [
                 }),
                 child: [
                     {
-                        path: '/class/mobile/detail',
-                        name: 'mobile-detail',
+                        path: '/class/mobile/:type',
+                        name: 'mobile-type',
                         component: Loadable({
-                            loader: () => import('_pages/class-mobile-detail/index'),
+                            loader: () => import('_pages/class-mobile-type/index'),
                             loading: Loading,
                         }),
                     },
