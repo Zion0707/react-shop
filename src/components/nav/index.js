@@ -1,6 +1,6 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, withRouter } from 'react-router-dom';
-import { TabBar } from 'antd-mobile';
+import '_less/nav/index.less';
 
 const Nav = () => {
     const history = useHistory();
@@ -31,34 +31,35 @@ const Nav = () => {
     }, [pathname]);
 
     return (
-        <Fragment>
-            <TabBar noRenderContent={true} tintColor="#c82519">
-                <TabBar.Item
-                    selected={barSelected === 'home'}
-                    title="首页"
-                    key="home"
-                    icon={<div className="tabbar-icon tabbar-home"></div>}
-                    selectedIcon={<div className="tabbar-icon tabbar-home-active"></div>}
-                    onPress={tabbarSelect.bind(this, 'home')}
-                ></TabBar.Item>
-                <TabBar.Item
-                    selected={barSelected === 'class'}
-                    title="分类"
-                    key="class"
-                    icon={<div className="tabbar-icon tabbar-class"></div>}
-                    selectedIcon={<div className="tabbar-icon tabbar-class-active"></div>}
-                    onPress={tabbarSelect.bind(this, 'class')}
-                ></TabBar.Item>
-                <TabBar.Item
-                    selected={barSelected === 'user'}
-                    title="用户中心"
-                    key="user"
-                    icon={<div className="tabbar-icon tabbar-user"></div>}
-                    selectedIcon={<div className="tabbar-icon tabbar-user-active"></div>}
-                    onPress={tabbarSelect.bind(this, 'user')}
-                ></TabBar.Item>
-            </TabBar>
-        </Fragment>
+        <ul className="tab-bar">
+            <li
+                className={`tabbar-home ${barSelected === 'home' ? 'active' : ''}`}
+                onClick={() => {
+                    tabbarSelect('home');
+                }}
+            >
+                <i></i>
+                <span>home</span>
+            </li>
+            <li
+                className={`tabbar-class ${barSelected === 'class' ? 'active' : ''}`}
+                onClick={() => {
+                    tabbarSelect('class');
+                }}
+            >
+                <i></i>
+                <span>class</span>
+            </li>
+            <li
+                className={`tabbar-user ${barSelected === 'user' ? 'active' : ''}`}
+                onClick={() => {
+                    tabbarSelect('user');
+                }}
+            >
+                <i></i>
+                <span>user</span>
+            </li>
+        </ul>
     );
 };
 export default withRouter(Nav);
