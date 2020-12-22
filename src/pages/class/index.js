@@ -2,6 +2,7 @@ import React from 'react';
 import { renderRoutes } from 'react-router-config';
 import AnimatedRouter from '_components/animated-router';
 import Nav from '_components/nav';
+import Loading from '_components/loading';
 import '_less/class/index.less';
 
 const Class = (props) => {
