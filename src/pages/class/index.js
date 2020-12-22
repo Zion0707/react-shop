@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
+import AnimatedRouter from '_components/animated-router';
 import '_less/class/index.less';
 
 const Class = (props) => {
@@ -26,8 +27,7 @@ const Class = (props) => {
                     computer
                 </li>
             </ul>
-
-            {renderRoutes(child)}
+            <AnimatedRouter>{renderRoutes(child)}</AnimatedRouter>
         </div>
     );
 };
