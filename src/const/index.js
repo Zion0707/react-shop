@@ -75,6 +75,14 @@ export const routers = [
         }),
     },
     {
+        path: '/test',
+        name: 'test',
+        component: Loadable({
+            loader: () => import('_pages/test/index'),
+            loading: Loading,
+        }),
+    },
+    {
         path: '*',
         name: '404',
         component: Loadable({
