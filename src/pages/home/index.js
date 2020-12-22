@@ -4,7 +4,7 @@ import { goodsListApi } from '_api/index';
 import { useHistory } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import AnimatedRouter from '_components/animated-router';
-import Nav from '_components/nav';
+import BottomTab from '_components/bottom-tab';
 import '_mock/index';
 import '_less/home/index.less';
 
@@ -65,7 +65,7 @@ const Home = (props) => {
                         })}
                     </ul>
                 </div>
-                <Nav />
+                <BottomTab />
                 {renderRoutes(child)}
             </div>
         </AnimatedRouter>

@@ -6,7 +6,7 @@ import { objIsNull, toLogout } from '_utils/index';
 import { Redirect, useHistory } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import AnimatedRouter from '_components/animated-router';
-import Nav from '_components/nav';
+import BottomTab from '_components/bottom-tab';
 import '_less/user/index.less';
 
 const { Item } = List;
@@ -49,7 +49,7 @@ const User = (props) => {
                         </Button>
                     </div>
                 </div>
-                <Nav />
+                <BottomTab />
                 {renderRoutes(child)}
             </div>
         </AnimatedRouter>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, withRouter } from 'react-router-dom';
-import '_less/nav/index.less';
+import '_less/bottom-tab/index.less';
 
-const Nav = () => {
+const BottomTab = () => {
     const history = useHistory();
     const { pathname } = history.location;
     const [barSelected, setBarSelected] = useState('home');
@@ -62,4 +62,4 @@ const Nav = () => {
         </ul>
     );
 };
-export default withRouter(Nav);
+export default withRouter(BottomTab);
