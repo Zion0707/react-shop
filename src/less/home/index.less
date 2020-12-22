@@ -1,50 +1,57 @@
 .home {
     width: 100%;
     height: 100%;
-    overflow-y: auto;
+    flex: 1;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
 
     .home-search {
+        width: 100%;
         height: 2.5rem;
-        overflow: hidden;
         .am-search {
             height: 2.5rem;
         }
     }
 
-    .home-item {
-        padding: 0.5rem;
-        display: flex;
-        flex-wrap: wrap;
-        li {
-            flex-direction: column;
-            width: 8.375rem;
-            height: 10rem;
-            background-color: #ffffff;
-            margin: 0.25rem;
-            .in {
-                padding: 0.5rem;
-            }
-            .photo {
-                width: 100%;
-                height: 6.6rem;
-                background-color: #f1f1f1;
-                margin-bottom: 0.5rem;
-            }
-            .message {
-                h4 {
-                    font-size: 0.75rem;
-                    line-height: 1rem;
-                    margin-bottom: 0.1rem;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
+    .home-item-wrap {
+        flex: 1;
+        overflow-y: auto;
+        .home-item {
+            padding: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            li {
+                flex-direction: column;
+                width: 8.375rem;
+                height: 10rem;
+                background-color: #ffffff;
+                margin: 0.25rem;
+                .in {
+                    padding: 0.5rem;
                 }
-                p {
-                    font-size: 0.7rem;
-                    line-height: 0.8rem;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
+                .photo {
+                    width: 100%;
+                    height: 6.6rem;
+                    background-color: #f1f1f1;
+                    margin-bottom: 0.5rem;
+                }
+                .message {
+                    h4 {
+                        font-size: 0.75rem;
+                        line-height: 1rem;
+                        margin-bottom: 0.1rem;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                    p {
+                        font-size: 0.7rem;
+                        line-height: 0.8rem;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
                 }
             }
         }

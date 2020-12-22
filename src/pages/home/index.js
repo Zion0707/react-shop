@@ -44,26 +44,28 @@ const Home = (props) => {
                     <div className="home-search">
                         <SearchBar placeholder="输入您想要的项目" onSubmit={searchSubmit} />
                     </div>
-                    <ul className="home-item">
-                        {goodList.map((item) => {
-                            return (
-                                <li
-                                    key={item.id}
-                                    onClick={() => {
-                                        history.push(`/home/${item.id}`);
-                                    }}
-                                >
-                                    <div className="in">
-                                        <div className="photo"></div>
-                                        <div className="message">
-                                            <h4>{item.name}</h4>
-                                            <p>{item.desc}</p>
+                    <div className="home-item-wrap">
+                        <ul className="home-item">
+                            {goodList.map((item) => {
+                                return (
+                                    <li
+                                        key={item.id}
+                                        onClick={() => {
+                                            history.push(`/home/${item.id}`);
+                                        }}
+                                    >
+                                        <div className="in">
+                                            <div className="photo"></div>
+                                            <div className="message">
+                                                <h4>{item.name}</h4>
+                                                <p>{item.desc}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                            );
-                        })}
-                    </ul>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </div>
                 </div>
                 <BottomTab />
                 {renderRoutes(child)}
