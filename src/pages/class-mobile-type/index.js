@@ -5,7 +5,7 @@ const ClassMobileType = (props) => {
     const { type } = props.match.params;
     const history = useHistory();
     return (
-        <div className="class">
+        <div className="child-page">
             <h4>
                 <button
                     onClick={() => {

@@ -6,7 +6,7 @@ const ClassMobile = (props) => {
     const { child } = props.route;
     const history = useHistory();
     return (
-        <div className="class">
+        <div className="child-page">
             <h4>
                 <button
                     onClick={() => {

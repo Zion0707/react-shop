@@ -57,8 +57,8 @@ export const routers = [
                 ],
             },
             {
-                path: '/class/mobile',
-                name: 'mobile',
+                path: '/class/computer',
+                name: 'computer',
                 component: Loadable({
                     loader: () => import('_pages/class-computer/index'),
                     loading: Loading,

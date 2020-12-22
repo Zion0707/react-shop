@@ -42,7 +42,7 @@ const devConfig = {
         //     '/api': 'http://localhost:7001',
         // },
         host: '0.0.0.0',
-        port: 3002,
+        port: 3000,
     },
 
     mode: 'development',
