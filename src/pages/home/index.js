@@ -3,6 +3,8 @@ import { SearchBar, Toast } from 'antd-mobile';
 import { goodsListApi } from '_api/index';
 import { useHistory } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
+import AnimatedRouter from '_components/animated-router';
+import Nav from '_components/nav';
 import '_mock/index';
 import '_less/home/index.less';
 
@@ -36,33 +38,37 @@ const Home = (props) => {
     }, []);
 
     return (
-        <div className="home">
-            <div className="home-search">
-                <SearchBar placeholder="输入您想要的项目" onSubmit={searchSubmit} />
+        <AnimatedRouter>
+            <div className="page-wrap">
+                <div className="home">
+                    <div className="home-search">
+                        <SearchBar placeholder="输入您想要的项目" onSubmit={searchSubmit} />
+                    </div>
+                    <ul className="home-item">
+                        {goodList.map((item) => {
+                            return (
+                                <li
+                                    key={item.id}
+                                    onClick={() => {
+                                        history.push(`/home/${item.id}`);
+                                    }}
+                                >
+                                    <div className="in">
+                                        <div className="photo"></div>
+                                        <div className="message">
+                                            <h4>{item.name}</h4>
+                                            <p>{item.desc}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
+                <Nav />
+                {renderRoutes(child)}
             </div>
-            <ul className="home-item">
-                {goodList.map((item) => {
-                    return (
-                        <li
-                            key={item.id}
-                            onClick={() => {
-                                history.push(`/home/${item.id}`);
-                            }}
-                        >
-                            <div className="in">
-                                <div className="photo"></div>
-                                <div className="message">
-                                    <h4>{item.name}</h4>
-                                    <p>{item.desc}</p>
-                                </div>
-                            </div>
-                        </li>
-                    );
-                })}
-            </ul>
-
-            {renderRoutes(child)}
-        </div>
+        </AnimatedRouter>
     );
 };
 

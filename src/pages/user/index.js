@@ -4,12 +4,16 @@ import { connect } from 'react-redux';
 import { saveUserInfo } from '_store/actions/index';
 import { objIsNull, toLogout } from '_utils/index';
 import { Redirect, useHistory } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
+import AnimatedRouter from '_components/animated-router';
+import Nav from '_components/nav';
 import '_less/user/index.less';
 
 const { Item } = List;
 
 const User = (props) => {
     const { userInfo } = props;
+    const { child } = props.route;
     const history = useHistory();
 
     const logout = () => {
@@ -23,26 +27,32 @@ const User = (props) => {
         return <Redirect to="/login" />;
     }
     return (
-        <div className="user">
-            <List className="user-item">
-                <Item
-                    extra={
-                        <div className="head-portrait">
-                            <img src={userInfo.head} alt="头像" />
-                        </div>
-                    }
-                >
-                    头像：
-                </Item>
-                <Item extra={userInfo.name}>用户名：</Item>
-                <Item extra={userInfo.uid}>ID：</Item>
-            </List>
-            <div className="user-logout">
-                <Button type="warning" onClick={logout}>
-                    退出
-                </Button>
+        <AnimatedRouter>
+            <div className="page-wrap">
+                <div className="page user">
+                    <List className="user-item">
+                        <Item
+                            extra={
+                                <div className="head-portrait">
+                                    <img src={userInfo.head} alt="头像" />
+                                </div>
+                            }
+                        >
+                            头像：
+                        </Item>
+                        <Item extra={userInfo.name}>用户名：</Item>
+                        <Item extra={userInfo.uid}>ID：</Item>
+                    </List>
+                    <div className="user-logout">
+                        <Button type="warning" onClick={logout}>
+                            退出
+                        </Button>
+                    </div>
+                </div>
+                <Nav />
+                {renderRoutes(child)}
             </div>
-        </div>
+        </AnimatedRouter>
     );
 };
 

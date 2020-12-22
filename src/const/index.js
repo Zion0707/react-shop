@@ -73,14 +73,7 @@ export const routers = [
             loader: () => import('_pages/user/index'),
             loading: Loading,
         }),
-    },
-    {
-        path: '/test',
-        name: 'test',
-        component: Loadable({
-            loader: () => import('_pages/test/index'),
-            loading: Loading,
-        }),
+        child: [],
     },
     {
         path: '*',
