@@ -9,7 +9,7 @@ module.exports = {
         // 设置html模板
         new HtmlWebpackPlugin({
             template: resolve(__dirname, '../src/index.html'),
-            favicon: resolve(__dirname, '../src/statics/icons/favicon.png'),
+            favicon: resolve(__dirname, '../src/statics/imgs/favicon.png'),
         }),
     ],
 
